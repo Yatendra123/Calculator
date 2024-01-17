@@ -1,0 +1,18 @@
+name: Main Branch Workflow
+
+on:
+  push:
+    branches: [master]  # Trigger on push events to the main branch
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run tests
+        run: npm test  # Replace with your testing commands
+      - name: Build project
+        run: npm run build  # Replace with your build commands
+      - name: Deploy to production  # Optional step for deployment
+        run: ./deploy.sh  # Replace with your deployment script
